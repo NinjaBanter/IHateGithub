@@ -94,21 +94,27 @@ public class ZombieBehaviour : MonoBehaviour
             }
 
             //foreach(GameObject i in myList)
-            for(int i = 0; i < myList.Count; i++)
-                {
+            for (int i = 0; i < myList.Count; i++)
+            {
 
                 GameObject target = myList[i];
+                if (myList[i] != null)
+                {
 
-                // float distance = Vector3.Distance(this.gameObject.transform.position, i.transform.position);
-                float distance = Vector3.Distance(this.gameObject.transform.position, target.transform.position);
 
-                if (distance < shortestDistance)
+
+
+                    // float distance = Vector3.Distance(this.gameObject.transform.position, i.transform.position);
+                    float distance = Vector3.Distance(this.gameObject.transform.position, target.transform.position);
+
+                    if (distance < shortestDistance)
                     {
-                    shortestDistance = distance;
-                    // currentTarget = i;  
-                    currentTarget = target; //; 
+                        shortestDistance = distance;
+                        // currentTarget = i;  
+                        currentTarget = target; //; 
                     }
                 }
+            }
 
             if(currentTarget != null)
             {

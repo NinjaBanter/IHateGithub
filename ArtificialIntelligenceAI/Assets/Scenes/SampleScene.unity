@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHuman: {fileID: 7924765922138243739, guid: 657f07b25ceb52b439dbfa015f149fb0, type: 3}
   humans: []
-  humanAmount: 1
+  humanAmount: 30
   spawnCollisionCheckRadius: 0
 --- !u!4 &196815016
 Transform:
@@ -666,7 +666,7 @@ MonoBehaviour:
     type: 3}
   zombies: []
   playArea: {fileID: 0}
-  zombieAmount: 2
+  zombieAmount: 1
   spawnCollisionCheckRadius: 0
 --- !u!4 &799840583
 Transform:
@@ -780,7 +780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1297679214
 Transform:
   m_ObjectHideFlags: 0

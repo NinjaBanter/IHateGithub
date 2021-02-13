@@ -33,7 +33,14 @@ public class ZombieDetect : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        theZombie.GetComponent<ZombieBehaviour>().zombieState = "Wander";
+        if(theZombieBehaviour.zombieState != "Full")
+
+        //theZombie.GetComponent<ZombieBehaviour>().zombieState = "Wander";
         theZombieBehaviour.myList.Remove(other.transform.gameObject);
+
+        if(theZombieBehaviour.myList.Count == 0)
+        {
+            theZombie.GetComponent<ZombieBehaviour>().zombieState = "Wander";
+        }
     }
 }

@@ -25,7 +25,7 @@ public class ZombieBehaviour : MonoBehaviour
     private NavMeshAgent agent;
     private float timer;
 
-    float shortestDistance;
+    public float shortestDistance;
     float deathDistance = 2f;
 
 
@@ -114,6 +114,10 @@ public class ZombieBehaviour : MonoBehaviour
                         currentTarget = target; //; 
                     }
                 }
+                else
+                {
+                    zombieState = "Wander";
+                }
             }
 
             if(currentTarget != null)
@@ -146,8 +150,9 @@ public class ZombieBehaviour : MonoBehaviour
         if(zombieState == "Full")
         {
             myList.Clear();
+            currentTarget = null;
             Debug.Log("I am Full");
-
+            Invoke("ResetWander", 5f);
         }
     }
 
@@ -172,6 +177,11 @@ public class ZombieBehaviour : MonoBehaviour
     {
         UnityEditor.Handles.color = Color.blue;
         UnityEditor.Handles.DrawWireDisc(this.transform.position, this.transform.up, wanderRadius);
+    }
+
+    public void ResetWander()
+    {
+        zombieState = "Wander";
     }
 }
 

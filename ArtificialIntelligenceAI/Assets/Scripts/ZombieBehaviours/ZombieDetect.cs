@@ -22,8 +22,9 @@ public class ZombieDetect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Human")
+        if (other.tag == "Human" && other.GetComponent<HumanBehaviour>().isDead == false && theZombie.GetComponent<ZombieBehaviour>().zombieState != "Full")
         {
+            Debug.Log("Chonk chonk chonk");
             theZombieBehaviour.zombieState = "Alert";
        //     theZombieBehaviour.currentTarget = other.transform.gameObject;
             theZombieBehaviour.myList.Add(other.transform.gameObject);

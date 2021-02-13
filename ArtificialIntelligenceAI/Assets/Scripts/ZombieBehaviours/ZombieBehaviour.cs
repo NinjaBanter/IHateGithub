@@ -54,9 +54,20 @@ public class ZombieBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-       // Debug.Log("Shortest distance is " + shortestDistance);
+        /*
+         * STATES ARE : 
+         * WANDER
+         * ALERT
+         * FULL
+         * 
+         * */
 
+
+        timer += Time.deltaTime;
+        // Debug.Log("Shortest distance is " + shortestDistance);
+
+
+        // WANDER STATE --------- WANDER STATE --------- WANDER STATE --------- WANDER STATE --------- WANDER STATE ---------WANDER STATE ---------WANDER STATE ---------
         if (zombieState == "Wander")
         {
             agent.speed = 3.5f;
@@ -70,7 +81,7 @@ public class ZombieBehaviour : MonoBehaviour
             }
          }
 
-
+        // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------
         if (zombieState == "Alert")
         {
 
@@ -111,6 +122,7 @@ public class ZombieBehaviour : MonoBehaviour
                 {
                     if (theHumanBehaviour.isDead == false)
                     {
+                        zombieState = "Full";
                          currentTarget.GetComponent<HumanBehaviour>().humanState = "Dead";
                         theHumanBehaviour.humanState = "Dead";
                         Debug.Log("Death to all humans");//Code to kill humans
@@ -121,6 +133,14 @@ public class ZombieBehaviour : MonoBehaviour
 
 
 
+
+        }
+
+
+        if(zombieState == "Full")
+        {
+            myList.Clear();
+            Debug.Log("I am Full");
 
         }
     }

@@ -71,6 +71,7 @@ public class ZombieBehaviour : MonoBehaviour
         if (zombieState == "Wander")
         {
             agent.speed = 3.5f;
+            shortestDistance = 500f;
 
 
             if (timer >= wanderTimer)

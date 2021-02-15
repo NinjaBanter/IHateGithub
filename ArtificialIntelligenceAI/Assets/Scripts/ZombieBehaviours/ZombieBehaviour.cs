@@ -8,6 +8,8 @@ public class ZombieBehaviour : MonoBehaviour
 {
     public float wanderRadius;
     public float wanderTimer;
+    public GameObject zombiePrefab;
+    public Animator zombieAnim;
 
 
     public List<GameObject> myList = new List<GameObject>();
@@ -35,6 +37,7 @@ public class ZombieBehaviour : MonoBehaviour
     void OnEnable()
     {
         agent = GetComponent<NavMeshAgent>();
+        zombieAnim = zombiePrefab.GetComponent<Animator>();
         zombieState = "Wander";
         anim = gameObject.GetComponent<Animation>();
         anim.Play("ZombieBirth");
@@ -70,6 +73,8 @@ public class ZombieBehaviour : MonoBehaviour
         // WANDER STATE --------- WANDER STATE --------- WANDER STATE --------- WANDER STATE --------- WANDER STATE ---------WANDER STATE ---------WANDER STATE ---------
         if (zombieState == "Wander")
         {
+            zombieAnim.SetBool("IsAlert", false);
+            zombieAnim.SetBool("IsWandering", true);
             agent.speed = 3.5f;
             shortestDistance = 500f;
 
@@ -85,7 +90,8 @@ public class ZombieBehaviour : MonoBehaviour
         // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------ // ALERT STATE ------------
         if (zombieState == "Alert")
         {
-
+            zombieAnim.SetBool("IsWandering", false);
+            zombieAnim.SetBool("IsAlert", true);
             agent.speed = 10f;
 
             if(myList.Count == 0)
